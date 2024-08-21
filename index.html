@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite 3D</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image:url(Design\ sem\ nome.png);
+            margin: 0;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-color: #f5f5f5;
+        }
+        .convite {
+            width: 300px;
+            height: 200px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            perspective: 1000px;
+            transition: transform 0.5s;
+        }
+        .convite:hover {
+            transform: rotateY(20deg) rotateX(10deg);
+        }
+        .conteudo {
+            padding: 20px;
+            text-align: center;
+        }
+        .titulo {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .mensagem {
+            font-size: 16px;
+            color: #555;
+        }
+        .localização {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .horas {
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="convite">
+        <div class="conteudo">
+            <div class="titulo">Você está convidado!</div>
+            <div class="mensagem">Junte-se a nós para uma celebração especial.</div>
+            <div class="localização">Vai ser no Fausto manuel da Asa norte</div>
+            <div class="horas">Por volta das 18:30</div>
+        </div>
+    </div>
+    <script>
+        const convite = document.querySelector('.convite');
+        let isRotating = false;
+        let rotation = 0;
+
+        convite.addEventListener('mouseover', () => {
+            isRotating = true;
+            rotate();
+        });
+
+        convite.addEventListener('mouseout', () => {
+            isRotating = false;
+        });
+
+        function rotate() {
+            if (isRotating) {
+                rotation += 1;
+                convite.style.transform = `rotateY(${rotation}deg) rotateX(10deg)`;
+                requestAnimationFrame(rotate);
+            }
+        }
+    </script>
+</body>
+</html>
